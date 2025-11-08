@@ -1,0 +1,42 @@
+name: ejemplo
+description: Un proyecto de Flutter.
+publish_to: 'none' 
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0' # (Asegúrate de que esto sea compatible con tu Flutter)
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # --- LIBRERÍAS QUE YA TENÍAS ---
+  flutter_bluetooth_serial: ^0.4.0
+  app_settings: ^5.1.1 
+  # (flutter_colorpicker ya no la usamos, así que la quité)
+
+  # --- ¡NUEVA LIBRERÍA DE IDIOMA! ---
+  easy_localization: ^3.0.5 # (Usamos una versión reciente)
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  flutter_native_splash: ^2.4.0 # (Tu splash nativo)
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  # --- CARPETA DE ASSETS ---
+  assets:
+    - assets/
+    - assets/plche.png
+    # --- ¡LÍNEA IMPORTANTE! ---
+    - assets/translations/ # <-- Esta línea carga tus archivos .json
+
+# Configuración del Splash Nativo (ya la tenías)
+flutter_native_splash:
+  color: "#448AFF"
+  image: assets/plche.png

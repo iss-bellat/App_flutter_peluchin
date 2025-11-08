@@ -1,0 +1,43 @@
+{
+    "tab_connect": "Connect",
+    "tab_game": "Game",
+    "tab_stats": "Statistics",
+    "tab_language": "Language",
+
+    "paired_devices": "Paired Devices",
+    "select_device": "Select a device",
+    "connect_button": "Connect",
+    "connected_status": "CONNECTED",
+    "disconnect_button": "Disconnect",
+    
+    "game_choose_item": "Choose an item to find",
+    "game_scan_card_of": "Scan the card for... \n{value}",
+    "game_correct": "CORRECT! \nIt was {value}",
+    "game_incorrect": "Incorrect. \nThat wasn't the card for {value}",
+    "game_no_user": "Select a user",
+    "game_no_connection": "Connect first",
+    "game_no_cards": "Error: No cards for this category.",
+
+    "stats_add_user": "Add User",
+    "stats_new_user_name": "New user name",
+    "stats_select_user": "Select a user",
+    "stats_no_users": "No users yet.",
+    "stats_title": "Statistics for: {user}",
+    "stats_summary": "Overall Summary",
+    "stats_percent_correct": "% Correct",
+    "stats_total_correct": "Total Correct",
+    "stats_total_incorrect": "Total Errors",
+    "stats_correct_animals": "Correct Animals",
+    "stats_correct_colors": "Correct Colors",
+    "stats_correct_numbers": "Correct Numbers",
+    "stats_errors_animals": "Animal Errors",
+    "stats_errors_colors": "Color Errors",
+    "stats_errors_numbers": "Number Errors",
+    "stats_no_attempts": "No attempts yet.",
+    "stats_no_errors": "No errors yet.",
+    "stats_total": "Total",
+
+    "lang_page_title": "Change Language",
+    "lang_spanish": "Spanish",
+    "lang_english": "English"
+}

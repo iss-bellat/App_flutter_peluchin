@@ -1,0 +1,43 @@
+{
+    "tab_connect": "Conectar",
+    "tab_game": "Juego",
+    "tab_stats": "Estadísticas",
+    "tab_language": "Idioma",
+
+    "paired_devices": "Dispositivos Emparejados",
+    "select_device": "Selecciona un dispositivo",
+    "connect_button": "Conectar",
+    "connected_status": "CONECTADO",
+    "disconnect_button": "Desconectar",
+    
+    "game_choose_item": "Elige un ítem para buscar",
+    "game_scan_card_of": "Acerca la tarjeta de... \n{value}",
+    "game_correct": "¡CORRECTO! \nEra {value}",
+    "game_incorrect": "Incorrecto. \nNo era la tarjeta de {value}",
+    "game_no_user": "Selecciona un usuario",
+    "game_no_connection": "Conéctate primero",
+    "game_no_cards": "Error: No hay tarjetas para esta categoría.",
+
+    "stats_add_user": "Añadir Usuario",
+    "stats_new_user_name": "Nombre del nuevo usuario",
+    "stats_select_user": "Selecciona un usuario",
+    "stats_no_users": "Aún no hay usuarios.",
+    "stats_title": "Estadísticas de: {user}",
+    "stats_summary": "Resumen General",
+    "stats_percent_correct": "% de Aciertos",
+    "stats_total_correct": "Aciertos Totales",
+    "stats_total_incorrect": "Errores Totales",
+    "stats_correct_animals": "Aciertos Animales",
+    "stats_correct_colors": "Aciertos Colores",
+    "stats_correct_numbers": "Aciertos Números",
+    "stats_errors_animals": "Errores Animales",
+    "stats_errors_colors": "Errores Colores",
+    "stats_errors_numbers": "Errores Números",
+    "stats_no_attempts": "Aún no hay aciertos.",
+    "stats_no_errors": "Aún no hay errores.",
+    "stats_total": "Total",
+
+    "lang_page_title": "Cambiar Idioma",
+    "lang_spanish": "Español",
+    "lang_english": "Inglés"
+}

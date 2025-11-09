@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'data_service.dart'; // Importa el cerebro
-import 'package:easy_localization/easy_localization.dart'; // Importa traducciones
+import 'data_service.dart'; // Comunicación Bluetooth
+import 'package:easy_localization/easy_localization.dart'; // Traducciones
 
 class GamePage extends StatefulWidget {
   const GamePage({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class _GamePageState extends State<GamePage> {
   StreamSubscription<String>? _uidSubscription;
 
   String _expectedValue = ""; 
-  String _statusMessage = "game_choose_item"; // Clave de traducción
+  String _statusMessage = "game_choose_item";
   Color _backgroundColor = Colors.grey.shade800;
   IconData _displayIcon = Icons.gamepad_outlined;
   bool _waitingForCard = false; 
@@ -52,23 +52,18 @@ class _GamePageState extends State<GamePage> {
 
     final isCorrect = dataService.logGameResult(uid, _expectedValue);
     
-    // --- (Llamada de audio BORRADA) ---
-    if (isCorrect) {
-      // Envía el comando para reproducir "0001.mp3"
-      dataService.sendCommand("PLAY:1"); 
-    } else {
-      // Envía el comando para reproducir "0002.mp3"
-      dataService.sendCommand("PLAY:2");
-    }
-
     setState(() {
       _waitingForCard = false; 
       if (isCorrect) {
-        _statusMessage = "game_correct"; // Clave de traducción
+        // --- Sonido correcto ---
+        dataService.sendMessage("S1");
+        _statusMessage = "game_correct";
         _backgroundColor = Colors.green;
         _displayIcon = Icons.check;
       } else {
-        _statusMessage = "game_incorrect"; // Clave de traducción
+        // --- Sonido incorrecto ---
+        dataService.sendMessage("S2");
+        _statusMessage = "game_incorrect";
         _backgroundColor = Colors.red;
         _displayIcon = Icons.close;
       }
@@ -91,37 +86,26 @@ class _GamePageState extends State<GamePage> {
       return;
     }
 
+    // --- Enviar comando de sonido según el botón presionado ---
+    if (value.toUpperCase() == "VERDE") {
+      dataService.sendMessage("S3"); // Sonido botón verde
+    } else if (value.toUpperCase() == "ROJO") {
+      dataService.sendMessage("S4"); // Sonido botón rojo
+    } else if (value.toUpperCase() == "AZUL") {
+      dataService.sendMessage("S5"); // Sonido botón azul
+    }
+
     setState(() {
       _expectedValue = value;
-      _statusMessage = "game_scan_card_of"; // Clave de traducción
+      _statusMessage = "game_scan_card_of";
       _backgroundColor = Colors.indigo;
       _displayIcon = Icons.nfc;
       _waitingForCard = true; 
     });
-
-    // --- (Llamada de audio BORRADA) ---
-    // ¡¡AÑADIMOS LA LÓGICA DE INSTRUCCIONES AQUÍ!!
-    // Mapea el valor del botón al número de pista de audio
-    String? trackToPlay;
-    
-    // Usamos los valores de tu base de datos en data_service.dart
-    if (value == "VERDE") {
-      trackToPlay = "3"; // "Acerca la tarjeta verde" (0003.mp3)
-    } else if (value == "ROJO") {
-      trackToPlay = "4"; // "Acerca la tarjeta roja" (0004.mp3)
-    } else if (value == "AZUL") {
-      trackToPlay = "5"; // "Acerca la tarjeta azul" (0005.mp3)
-    }
-    // (No tenemos audios para ANIMAL o NUMERO, así que no sonarán)
-
-    // Si encontramos una pista de instrucción, la enviamos
-    if (trackToPlay != null) {
-      dataService.sendCommand("PLAY:$trackToPlay");
-    }
   }
 
   void _resetGame([String? customMessageKey]) {
-     String messageKey = customMessageKey ?? "game_choose_item";
+    String messageKey = customMessageKey ?? "game_choose_item";
     if (dataService.activeUser == null) {
       messageKey = "game_no_user";
     } else if (!dataService.isConnected) {
@@ -162,7 +146,11 @@ class _GamePageState extends State<GamePage> {
                 Text(
                   _statusMessage.tr(namedArgs: {'value': _expectedValue}),
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                    fontSize: 28,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
@@ -173,7 +161,6 @@ class _GamePageState extends State<GamePage> {
           child: _waitingForCard
               ? const Center(child: CircularProgressIndicator()) 
               : GridView.builder(
-                  // Padding para la barra flotante
                   padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 80.0),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3, 
@@ -192,7 +179,7 @@ class _GamePageState extends State<GamePage> {
                         backgroundColor: _getColorForCategory(category),
                         foregroundColor: Colors.black,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)
+                          borderRadius: BorderRadius.circular(12),
                         ),
                       ),
                       onPressed: () => _onItemTapped(value),

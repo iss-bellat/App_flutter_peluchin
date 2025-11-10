@@ -26,8 +26,8 @@ class DataService with ChangeNotifier {
 
   // --- Base de Datos del Juego ---
   final Map<String, Map<String, String>> cardDatabase = {
-    "04 93 1A 63": {"ANIMAL": "PERRO", "COLOR": "ROJO", "NUMERO": "UNO"},
-    "E3 B5 45 1C": {"ANIMAL": "GATO", "COLOR": "AZUL", "NUMERO": "DOS"},
+    "04 93 1A 63 11 01 89": {"ANIMAL": "PERRO", "COLOR": "ROJO", "NUMERO": "UNO"},
+    "A3 6A BA 0C": {"ANIMAL": "GATO", "COLOR": "AZUL", "NUMERO": "DOS"},
     "13 11 11 36": {"ANIMAL": "OSO", "COLOR": "VERDE", "NUMERO": "TRES"},
   };
 

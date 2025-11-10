@@ -56,13 +56,13 @@ class _GamePageState extends State<GamePage> {
       _waitingForCard = false; 
       if (isCorrect) {
         // --- Sonido correcto ---
-        dataService.sendMessage("S1");
+        dataService.sendMessage("OK");
         _statusMessage = "game_correct";
         _backgroundColor = Colors.green;
         _displayIcon = Icons.check;
       } else {
         // --- Sonido incorrecto ---
-        dataService.sendMessage("S2");
+        dataService.sendMessage("ERR");
         _statusMessage = "game_incorrect";
         _backgroundColor = Colors.red;
         _displayIcon = Icons.close;
@@ -93,6 +93,18 @@ class _GamePageState extends State<GamePage> {
       dataService.sendMessage("S4"); // Sonido botón rojo
     } else if (value.toUpperCase() == "AZUL") {
       dataService.sendMessage("S5"); // Sonido botón azul
+    }else if (value.toUpperCase() == "GATO") {
+    dataService.sendMessage("S6");
+    } else if (value.toUpperCase() == "OSO") {
+    dataService.sendMessage("S7");
+    } else if (value.toUpperCase() == "PERRO") {
+    dataService.sendMessage("S8");
+    }else if (value.toUpperCase() == "UNO") {
+    dataService.sendMessage("S9");
+    } else if (value.toUpperCase() == "DOS") {
+    dataService.sendMessage("S10");
+    } else if (value.toUpperCase() == "TRES") {
+    dataService.sendMessage("S11");
     }
 
     setState(() {
